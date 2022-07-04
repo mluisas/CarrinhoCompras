@@ -1,7 +1,10 @@
+import repository.RepositorioBase;
+
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Carrinho {
+public class Carrinho implements RepositorioBase<Produto, Integer>{
     private Pessoa pessoa;
     private final Map<Produto, Integer> produtos = new HashMap<>();
 
@@ -34,5 +37,38 @@ public class Carrinho {
         } else {
             produtos.put(produto, quantidade);
         }
+    }
+
+    public void listaItens(){
+
+    }
+
+    @Override
+    public Collection<Produto> getEntries() {
+        return this.produtos.keySet();
+    }
+
+    @Override
+    public void insert(Produto entry) {
+        this.addProduto(entry, 1);
+    }
+
+    @Override
+    public void update(Integer id, Produto newValue) {
+        Produto produto = new Produto();
+        if(!id.equals(newValue.getId())){
+            this.delete(id);
+            produto.setId(id);
+            this.insert(produto);
+        }
+        produto.setNome(newValue.getNome());
+        produto.setDescricao(newValue.getDescricao());
+        produto.setAlteracoesPossiveis(newValue.getAlteracoesPossiveis());
+        produto.setPreco(newValue.getPreco());
+    }
+
+    @Override
+    public void delete(Integer id) {
+        this.removeProduto(this.getById(id));
     }
 }

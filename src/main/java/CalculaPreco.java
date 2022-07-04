@@ -1,5 +1,5 @@
 import java.math.BigDecimal;
 
-public interface CalculaPreco {
-    BigDecimal calcular(Produto produto);
+public interface CalculaPreco<T> {
+    BigDecimal calcular(T t);
 }
