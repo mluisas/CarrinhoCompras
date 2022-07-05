@@ -1,8 +1,13 @@
+import repository.Id;
+import repository.ModeloBase;
+
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-public class Produto {
+public class Produto implements ModeloBase<Integer> {
+    @Id
     private Integer id;
     private String descricao;
     private String nome;
@@ -57,5 +62,20 @@ public class Produto {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public Type[] getActualTypeArguments() {
+        return new Type[]{Integer.class};
+    }
+
+    @Override
+    public Type getRawType() {
+        return this.getClass();
+    }
+
+    @Override
+    public Type getOwnerType() {
+        return null;
     }
 }
