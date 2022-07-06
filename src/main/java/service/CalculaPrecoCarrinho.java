@@ -1,3 +1,7 @@
+package service;
+
+import repository.Carrinho;
+
 import java.math.BigDecimal;
 
 public class CalculaPrecoCarrinho implements CalculaPreco<Carrinho>{

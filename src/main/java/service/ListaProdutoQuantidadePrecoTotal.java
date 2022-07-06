@@ -1,3 +1,8 @@
+package service;
+
+import model.Produto;
+import repository.Carrinho;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
