@@ -21,7 +21,13 @@ public class Carrinho implements RepositorioBase<Produto, Integer>{
     }
 
     public void addProduto(Produto produto, Integer quantidade) {
-        produtos.put(produto, quantidade);
+        if(quantidade > 0){
+            int adicional = 0;
+            if(produtos.containsKey(produto)){
+                adicional = produtos.get(produto);
+            }
+            produtos.put(produto, quantidade + adicional);
+        }
     }
 
     public void removeProduto(Produto produto){
@@ -37,10 +43,6 @@ public class Carrinho implements RepositorioBase<Produto, Integer>{
         } else {
             produtos.put(produto, quantidade);
         }
-    }
-
-    public void listaItens(){
-
     }
 
     @Override
