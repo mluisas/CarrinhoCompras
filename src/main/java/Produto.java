@@ -7,6 +7,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class Produto implements ModeloBase<Integer> {
+
+    public Produto(Integer id, String descricao, String nome, BigDecimal preco, List<AlteracaoPreco> alteracoesPossiveis) {
+        this.id = id;
+        this.descricao = descricao;
+        this.nome = nome;
+        this.preco = preco;
+        this.alteracoesPossiveis = alteracoesPossiveis;
+    }
+
+    public Produto(){
+
+    }
     @Id
     private Integer id;
     private String descricao;
